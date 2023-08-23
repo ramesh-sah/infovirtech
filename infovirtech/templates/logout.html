@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+
+        .logout-container {
+            text-align: center;
+            margin-top: 150px;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        p {
+            color: #666;
+        }
+
+        button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 4px;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+    <title>Logout Page</title>
+</head>
+<body>
+    <div class="logout-container">
+        <h1>Logout</h1>
+        <p>Are you sure you want to log out?</p>
+        <button id="logout-button">Logout</button>
+    </div>
+    <script>
+        document.getElementById("logout-button").addEventListener("click", function() {
+            fetch("/logout", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({ logout: true })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    window.location.href = "login.html";
+                } else {
+                    console.error("Logout failed");
+                }
+            })
+            .catch(error => {
+                console.error("An error occurred:", error);
+            });
+        });
+    </script>
+</body>
+</html>
