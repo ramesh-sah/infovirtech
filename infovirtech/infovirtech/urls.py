@@ -21,5 +21,8 @@ from infovirtech import views
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("",views.Home,name="home")
+    path("",views.index,name="index"),
+    path("home/",views.home, name="Home"),
+    path("about/",views.about,name="about"),
+    path("services/",views.services,name="services")
 ]
