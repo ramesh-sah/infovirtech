@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 
-@login_required(login_url="/Login/")
+# @login_required(login_url="/Login/")
 
 def index(request):
     
